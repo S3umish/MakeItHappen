@@ -9,3 +9,4 @@ class CreateMissions < ActiveRecord::Migration
     end
   end
 end
+
