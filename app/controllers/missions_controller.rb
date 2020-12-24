@@ -1,9 +1,9 @@
 class MissionsController < ApplicationController
 
     get "/missions" do
-        @missions = current_user.missions
+        # @missions = current_user.missions
         # binding.pry
-        # @missions = Mission.all 
+        @missions = Mission.all 
         erb :"/missions/index"
     end
 
@@ -11,6 +11,7 @@ class MissionsController < ApplicationController
         if logged_in?
             erb :"/missions/new"
         else
+            flash[:error] = "You must log in to create a new mission."
             redirect "/"
         end
     end
@@ -18,10 +19,11 @@ class MissionsController < ApplicationController
     post "/missions" do
         @mission = current_user.missions.build(title: params[:title], description: params[:description], startdate: params[:startdate], enddate: params[:enddate])
         if @mission.save
-           
-           redirect"/missions"
+            flash[:message] = "Created Mission Successfully."
+            redirect"/missions"
         else
             @errors = current_user.errors.full_messages.to_sentence
+            flash[:error] = "Mission creation failed: Please fill out all fields to create your mission."
             redirect "/missions/new"
         end
     end
@@ -36,6 +38,7 @@ class MissionsController < ApplicationController
         if @mission.user_id == current_user.id
             erb :'/missions/edit'
         else
+            flash[:error] = "You are not authorized to edit this mission."
             redirect "/missions"
         end
     end
