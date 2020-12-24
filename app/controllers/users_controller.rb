@@ -14,7 +14,4 @@ class UsersController < ApplicationController
             erb :"/users/signup"
         end
     end
-
-
-
 end
