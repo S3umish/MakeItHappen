@@ -5,12 +5,13 @@
 <p><b>Description:</b><%= @mission.description %></p><br>
 <b>Startdate:</b> <%= @mission.startdate %></><br>
 <b>Enddate:</b> <%= @mission.enddate %></><br>
+<% if authorized_to_edit?(@mission)%>
+    <form method="get" action="/missions/<%=@mission.id%>/edit">
+            <input type="submit" value="Edit Mission">
+    </form><br>
 
- <form method="get" action="/missions/<%=@mission.id%>/edit">
-        <input type="submit" value="Edit Mission">
-</form><br>
-
- <form method="POST" action="/missions/<%=@mission.id%>/delete">
-        <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete This Mission">
-</form>
+    <form method="POST" action="/missions/<%=@mission.id%>/delete">
+            <input id="hidden" type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete This Mission">
+    </form>
+<% end %>
