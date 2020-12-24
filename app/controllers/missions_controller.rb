@@ -31,6 +31,25 @@ class MissionsController < ApplicationController
         erb :'/missions/show'
     end
 
+    get '/missions/:id/edit' do
+        @mission = Mission.find_by(id: params[:id])
+        if @mission.user_id == current_user.id
+            erb :'/missions/edit'
+        else
+            redirect "/missions"
+        end
+    end
+
+    patch '/missions/:id/edit' do
+        @mission = Mission.find_by(id: params[:id])
+        if @mission.update(params[:mission])
+            redirect "/missions/#{@mission.id}"
+        else
+            @errors = current_user.errors.full_messages.to_sentence
+            erb :"missions/show"
+        end
+    end
+
     
     
 

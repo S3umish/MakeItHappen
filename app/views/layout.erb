@@ -20,6 +20,12 @@
 
       <footer class="branding">
         <small>&copy; 2020 <strong>SinatraMakeItHappen</strong></small>
+        <% if logged_in? %>
+            <a href="/missions"> My Missions</a>  |
+            <a href="/missions/new">Create New Mission</a>  |
+            <a href="/logout">Logout</a>
+            <br></div>
+        <% end %></small>
       </footer>
     </div>
 
