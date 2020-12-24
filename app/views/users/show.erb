@@ -1,1 +1,14 @@
-<h1>Welcome</h1
+<h1>Welcome <%=@user.username%></h1>
+<%= @user.missions.each do |mission|%>
+    <ul>
+        <li><a href="/missions/<%=mission.id%>"><%=mission.title %></a></li>
+    </ul>
+<% end %>    
+
+<%if logged_in?%>
+    <h3>You are logged in as: <%= current_user.username%></h3>
+<% end %>
+
+<div class="logout">
+    <a href='/logout'>Logout</a>
+</div>
