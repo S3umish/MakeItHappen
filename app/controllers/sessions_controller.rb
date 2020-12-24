@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
     get '/login' do
-        erb :"/login"
+        if logged_in?
+            redirect "/missions"
+        end
+        erb :login
     end
 
     post "/login" do
