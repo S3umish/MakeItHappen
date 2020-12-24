@@ -3,6 +3,7 @@
 <small style="color: red;"><%= @errors %></small>
 
 <a href= "/missions/new"><strong> Create a new mission.</strong></a><br>
+<br><br>
 
 <ol><% @missions.each do |mission| %>
         <li><a href="/missions/<%= mission.id %>"><%= mission.title %></a></li>
