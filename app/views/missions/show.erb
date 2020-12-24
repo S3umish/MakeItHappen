@@ -9,3 +9,8 @@
  <form method="get" action="/missions/<%=@mission.id%>/edit">
         <input type="submit" value="Edit Mission">
 </form><br>
+
+ <form method="POST" action="/missions/<%=@mission.id%>/delete">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete This Mission">
+</form>

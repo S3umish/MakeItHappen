@@ -50,6 +50,16 @@ class MissionsController < ApplicationController
         end
     end
 
+    delete '/missions/:id/delete' do
+        @mission = Mission.find_by(id: params[:id]) 
+        if @mission && @mission.user == current_user
+           @mission.destroy
+           redirect "/missions"
+        else
+            @errors = current_user.errors.full_messages.to_sentence
+            redirect to "/" 
+        end
+    end 
     
     
 
