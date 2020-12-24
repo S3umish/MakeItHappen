@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
+            redirect "/missions"
         else
             redirect "/login"
         end
