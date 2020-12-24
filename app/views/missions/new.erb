@@ -1,6 +1,7 @@
 <h2>Create A Mission</h2>
 
 <form action="/missions" method="POST">
+    <small style="color: red;"><%= @errors %></small>
     
     <label for="title">Title: </label>
     <input type="text" name="title" id="title"><br><br>

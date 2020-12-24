@@ -18,11 +18,20 @@ class MissionsController < ApplicationController
     post "/missions" do
         @mission = current_user.missions.build(title: params[:title], description: params[:description], startdate: params[:startdate], enddate: params[:enddate])
         if @mission.save
+           
            redirect"/missions"
         else
+            @errors = current_user.errors.full_messages.to_sentence
             redirect "/missions/new"
         end
     end
+
+    get '/missions/:id' do
+        @mission = Mission.find_by(id: params[:id])
+        erb :'/missions/show'
+    end
+
+    
     
 
 end
