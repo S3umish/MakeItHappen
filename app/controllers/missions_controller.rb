@@ -22,7 +22,7 @@ class MissionsController < ApplicationController
             redirect"/missions"
         else
             @errors = mission.errors.full_messages.to_sentence
-            flash[:error] = "Mission creation failed: Please fill out all fields to create your mission."
+            flash[:error] = "Mission creation failed: Please fill out Title and Description to create mission."
             redirect "/missions/new"
         end
     end
@@ -48,7 +48,6 @@ class MissionsController < ApplicationController
             flash[:message] = "Updated Mission Successfully."
             redirect "/missions/#{@mission.id}"
         else
-            flash[:error] = "You didn't update the description."
             erb :"missions/show"
         end
     end
