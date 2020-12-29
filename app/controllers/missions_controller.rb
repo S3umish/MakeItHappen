@@ -2,7 +2,6 @@ class MissionsController < ApplicationController
 
     get "/missions" do
         # @missions = current_user.missions
-        # binding.pry
         @missions = Mission.all 
         erb :"/missions/index"
     end
@@ -17,12 +16,12 @@ class MissionsController < ApplicationController
     end
 
     post "/missions" do
-        @mission = current_user.missions.build(title: params[:title], description: params[:description], startdate: params[:startdate], enddate: params[:enddate])
-        if @mission.save
+        mission = current_user.missions.build(title: params[:title], description: params[:description], startdate: params[:startdate], enddate: params[:enddate])
+        if mission.save
             flash[:message] = "Created Mission Successfully."
             redirect"/missions"
         else
-            @errors = current_user.errors.full_messages.to_sentence
+            @errors = mission.errors.full_messages.to_sentence
             flash[:error] = "Mission creation failed: Please fill out all fields to create your mission."
             redirect "/missions/new"
         end
@@ -46,9 +45,10 @@ class MissionsController < ApplicationController
     patch '/missions/:id/edit' do
         @mission = Mission.find_by(id: params[:id])
         if @mission.update(params[:mission])
+            flash[:message] = "Updated Mission Successfully."
             redirect "/missions/#{@mission.id}"
         else
-            @errors = current_user.errors.full_messages.to_sentence
+            flash[:error] = "You didn't update the description."
             erb :"missions/show"
         end
     end
@@ -57,9 +57,9 @@ class MissionsController < ApplicationController
         @mission = Mission.find_by(id: params[:id]) 
         if @mission && @mission.user == current_user
            @mission.destroy
+           flash[:message] = "Deleted Mission Successfully."
            redirect "/missions"
         else
-            @errors = current_user.errors.full_messages.to_sentence
             redirect to "/" 
         end
     end 
