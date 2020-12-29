@@ -25,8 +25,5 @@ class SessionsController < ApplicationController
         else
             redirect "/"
         end
-    end
-
-
-    
+    end 
 end
