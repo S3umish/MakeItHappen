@@ -62,5 +62,4 @@ class MissionsController < ApplicationController
             redirect to "/" 
         end
     end 
-
 end
