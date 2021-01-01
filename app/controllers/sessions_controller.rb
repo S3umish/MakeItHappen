@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
         if logged_in?
             redirect "/missions"
         end
-        erb :login
+        erb :login   
     end
 
     post "/login" do
@@ -25,8 +25,5 @@ class SessionsController < ApplicationController
         else
             redirect "/"
         end
-    end
-
-
-    
+    end 
 end

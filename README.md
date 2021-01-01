@@ -17,4 +17,4 @@ Bug reports and pull requests are welcome on Github at https://github.com/S3umis
 
 A link to the license for your code :
 
-This project is licensed under the MIT License at https://github.com/S3umish/countrylist/blob/main/License
+This project is licensed under the MIT License https://github.com/S3umish/MakeItHappen/blob/master/LICENSE
