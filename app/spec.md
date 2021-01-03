@@ -1,6 +1,6 @@
-Build Models and Migrations
+Build Models and Migrations 
 draw out your models
-- their attributes
+- their attributes 
 - their relationships
 - a basic flow of how your application will work
 - Model classes
