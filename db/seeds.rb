@@ -2,7 +2,7 @@ User.destroy_all
 Mission.destroy_all
 
 users.each do |user|
-    User.create(user)
+    clearUser.create(user)
 end
 
 test1 = User.create(username: "test1", password: "pw")
