@@ -1,6 +1,8 @@
 
 MakeItHappen is a Sinatra MVC app designed to track Missions created by its User.
 
+![](https://media.giphy.com/media/8hselEw9noQ9B6UF0h/giphy.gif)
+
 Video Demo : https://youtu.be/Kg3ixvyfz5U
 
 Instructions :
